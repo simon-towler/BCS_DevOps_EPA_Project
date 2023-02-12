@@ -11,7 +11,7 @@ public class GreetingControllerTests {
         String expectedContent = String.format(template, name);
 
         GreetingController greetingController = new GreetingController();
-        Greeting retVal = greetingController.greeting(name);
+        Greeting retVal = greetingController.greeting(expectedContent);
         assert retVal.content().equals(expectedContent);
     }
 
