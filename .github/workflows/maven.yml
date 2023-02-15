@@ -68,3 +68,21 @@ jobs:
         run: docker build -t ${{ secrets.MY_EPA_DOCKER_REPO_NAME }}:latest .
       - name: Publish Docker image
         run: docker push ${{ secrets.MY_EPA_DOCKER_REPO_NAME }}
+
+
+  deploy-to-heroku:
+    name: Deploy to Heroku
+    runs-on: ubuntu-latest
+    needs: [build]
+
+    steps:
+      - uses: actions/checkout@v3
+      - name: Deploy to Heroku
+        # https://github.com/AkhileshNS/heroku-deploy
+        uses: AkhileshNS/heroku-deploy@v3.12.13
+        with: #below are the secrete
+          heroku_api_key: ${{secrets.HEROKU_API_KEY}}
+          heroku_email: ${{secrets.HEROKU_EMAIL}}
+          heroku_app_name: ${{secrets.HEROKU_APP_NAME}}
+          # don't make new Heroku app if existing one with same name not found
+          dontautocreate: true
