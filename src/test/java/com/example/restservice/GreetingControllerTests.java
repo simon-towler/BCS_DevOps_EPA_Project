@@ -24,4 +24,5 @@ public class GreetingControllerTests {
         long secondCounterValue = retVal2.id();
         assert secondCounterValue == firstCounterValue + 1;
     }
+
 }
