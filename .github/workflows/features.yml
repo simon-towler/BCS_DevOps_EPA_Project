@@ -3,7 +3,7 @@ name: Build features with Maven
 
 on:
   push:
-    branches: [ "user-stories/*" ]
+    branches: [ "user-stories/**" ]
 
 jobs:
   build:
